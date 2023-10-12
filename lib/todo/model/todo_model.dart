@@ -9,6 +9,6 @@ class TodoModel extends Equatable {
   TodoModel({this.id, this.title, this.subTitle, this.isCompleted = false});
 
   @override
-  // TODO: implement props
+
   List<Object?> get props => [id, title, subTitle, isCompleted];
 }

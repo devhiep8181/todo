@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:todo/todo/model/todo_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo/todo/cubit/todo_cubit.dart';
 
+
+// ignore: must_be_immutable
 class TodoOverviewOptionButton extends StatefulWidget {
   bool? checkbox;
-  List<TodoModel> todo = [];
-  TodoOverviewOptionButton(
-      {super.key, required this.checkbox, required this.todo});
+  //List<TodoModel> todo;
+  TodoOverviewOptionButton({super.key, required this.checkbox});
 
   @override
   State<TodoOverviewOptionButton> createState() =>
@@ -28,12 +30,7 @@ class _TodoOverviewOptionButtonState extends State<TodoOverviewOptionButton> {
       ],
       onSelected: (value) {
         if (value == 1) {
-          print("aaaa");
-          setState(() {
-            widget.checkbox = true;
-            widget.todo
-                .forEach((element) => element.isCompleted = widget.checkbox);
-          });
+          context.read<TodoCubit>().checkAllBox(widget.checkbox!);
         }
       },
     );

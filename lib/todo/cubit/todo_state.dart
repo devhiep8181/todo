@@ -1,17 +1,20 @@
 part of 'todo_cubit.dart';
 
 class TodoState extends Equatable {
-  final List<TodoModel> todos;
-  TodoState({required this.todos});
+  final List<TodoModel> todos; //list hien thi
+  final List<TodoModel> filterTodo; //list loc
+  const TodoState({required this.todos, required this.filterTodo});
   @override
-  // TODO: implement props
-  List<Object?> get props => [todos];
+
+  List<Object?> get props => [todos, filterTodo];
 
   TodoState copyWith({
     List<TodoModel>? todos,
+    List<TodoModel>? filterTodo,
   }) {
     return TodoState(
       todos: todos ?? this.todos,
+      filterTodo: filterTodo ?? this.filterTodo,
     );
   }
 }
